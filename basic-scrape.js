@@ -42,7 +42,7 @@ const componentObjsIntermediate = componentsIntermediate
          desc: trim(getDesc(component)[0]), // trim out white space, see regex.js
          inputs: getInputs(component).length, // counts number of inputs
          type: "intermediate", // scraping only the basic.html file
-         typeNum: 100, // designated for basic type
+         typeNum: 200, // designated for basic type
          isFavorite: false, // default is false
          order: 200 + orderIndex,
       };
@@ -50,14 +50,13 @@ const componentObjsIntermediate = componentsIntermediate
 const componentObjsFunctional = componentsFunctional
    .reverse()
    .map((component, orderIndex) => {
-      // map through components, takes a function that targets each individual key (component)
       return {
-         name: getName(component)[0], // run getName function which returns an array of things, then grabbing the first thing from array
-         desc: trim(getDesc(component)[0]), // trim out white space, see regex.js
-         inputs: getInputs(component).length, // counts number of inputs
-         type: "functional", // scraping only the basic.html file
-         typeNum: 100, // designated for basic type
-         isFavorite: false, // default is false
+         name: getName(component)[0], // getName takes the parameter of component and creates an array of data, the 0 index allows us to only return the name and nothing else
+         desc: trim(getDesc(component)[0]),
+         inputs: getInputs(component).length, // returns length or number of inputs for a function
+         type: "functional", // all scraping basic.html
+         typeNum: 300, // basic type
+         isFavorite: false, // default
          order: 300 + orderIndex,
       };
    });
@@ -70,7 +69,7 @@ const componentObjsAlgorithm = componentsAlgorithm
          desc: trim(getDesc(component)[0]), // trim out white space, see regex.js
          inputs: getInputs(component).length, // counts number of inputs
          type: "algorithm", // scraping only the basic.html file
-         typeNum: 100, // designated for basic type
+         typeNum: 400, // designated for basic type
          isFavorite: false, // default is false
          order: 400 + orderIndex,
       };
@@ -82,7 +81,7 @@ let orderedObjs = componentObjsBasic.concat(
    componentObjsAlgorithm
 );
 
-console.log(getDesc(component)[0]);
 const targetFile = "./dist/dist.json";
+console.log(orderedObjs);
 
 fs.writeFileSync(targetFile, JSON.stringify(orderedObjs));
