@@ -5,13 +5,13 @@ module.exports = {
       );
    },
    getName(component) {
-      return component.match(/(?<=<b>).+(?=<\/b>)/); // get everything between <b> tags
+      return component.match(/(?<=<b>).+(?=<\/b>)/);
    },
    getDesc(component) {
-      return component.match(/(?<=<\/b>\s-\s).+(?=<\/p>)/s); // get everything in the <p> tags, after the <b> tags
+      return component.match(/(?<=<\/b>\s-\s).+(?=<\/p>)/s);
    },
    getInputs(component) {
-      return component.match(/<input.+?\/\>/gs); // return an array of all inputs
+      return component.match(/<input.+?\/\>/gs);
    },
    trim(str) {
       return str
