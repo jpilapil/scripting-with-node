@@ -23,10 +23,11 @@ const componentsIntermediate = getComponents(sourceFileIntermediate);
 const componentsFunctional = getComponents(sourceFileFunctional);
 const componentsAlgorithm = getComponents(sourceFileAlgorithm);
 
-const componentObjsBasic = componentsBasic
+const componentObjsBasic = componentsBasic // array
    .reverse() // reverse the array of objects to put the first created at the front
    .map((component, orderIndex) => {
       // map through array of objects, takes an argument that targets each individual key (component), and tracks the index of each object
+      // console.log(getName(component));
       return {
          name: getName(component)[0], // run getName function which returns an array of things, then grabbing the first thing from array
          desc: trim(getDesc(component)[0]), // trim out white space, see regex.js
